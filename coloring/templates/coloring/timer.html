@@ -46,6 +46,14 @@
 
 	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas>
 	<div id="color-palette"></div> -->
+    <form action="{% url 'timer' %}" method="post">
+        {% csrf_token %}
+        <input name="tens_min" type="text" placeholder="tens_m">
+        <input name="ones_min" type="text" placeholder="ones_m">
+        <input name="tens_sec" type="text" placeholder="tens_s">
+        <input name="ones_sec" type="text" placeholder="ones_s">
+        <button type="submit">Start coloring!</button>
+    </form>
 </body>
 
 </html>
