@@ -6,6 +6,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>P3 Coloring</title>
 
+	<link rel="stylesheet" href="../../static/coloring/css/new_interaction.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
 
@@ -119,7 +126,47 @@
 </head>
 <body>
 
-	<canvas id="myCanvas" width="750px" height="750px"></canvas>
-	<div id="color-palette"></div>
+	<div class="menu-bar">
+		<img>
+		<img>
+		<div class="timer">
+			<img src="../../static/coloring/images/clock 2.svg">
+			2:00
+		</div>
+	</div>
+
+	<div class="palette">
+		<div class="basic">
+			<img id="open-drawer" src="../../static/coloring/images/Open drawer.svg">
+			<div class="swatches">
+				<img class="swatch" src="../../static/coloring/images/Swatch 1.svg">
+
+			</div>
+		</div>
+		<div class="paint-tools">
+			<div class="color-wheel-settings">
+
+			</div>
+			<div class="pre-made-settings">
+
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="tool-bar">
+		<div class="paint-tools">
+
+		</div>
+		<div class="undo-redo">
+			<img>
+			<img>
+		</div>
+	</div>
+
+	<div class="canvas">
+		<!--<canvas id="myCanvas" width="40%" height="40%"></canvas>-->
+	</div>
+
 </body>
 </html>
