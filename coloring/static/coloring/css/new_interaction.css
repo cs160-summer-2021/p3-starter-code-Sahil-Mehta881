@@ -1,1 +1,63 @@
-html, body, div, span, applet, object,iframe, h1, h2, h3, h4, h5, h6, p, blockquote,pre, a, abbr, acronym, address, big, cite,code, del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var, b,u, i, center, dl, dt, dd, ol, ul, li, fieldset,form, label, legend, table, caption, tbody,tfoot, thead, tr, th, td, article, aside,canvas, details, embed, figure, figcaption,footer, header, hgroup, menu, nav, output, ruby,section, summary, time, mark, audio, video {    margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+html, body {
+    width: 100%; 
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: #E5E5E5;
+}
+
+.menu-bar, .palette, .tool-bar, .canvas {
+    background-color: #fafafa;
+}
+
+.timer {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* PALETTE */
+
+.palette {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem;
+    border-radius: 24px 0px 0px 24px;
+    background-color: red;
+}
+
+#open-drawer {
+    width: 20px;
+}
+
+.swatches {
+    width: 40%;
+}
+
+.swatch {
+    width: 15%;
+}
+
