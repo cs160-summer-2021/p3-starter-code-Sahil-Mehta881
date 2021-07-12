@@ -129,9 +129,46 @@
 	<div class="menu-bar">
 		<img>
 		<img>
+
+		<script>
+			// Set the date we're counting down to
+			var countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
+			var tens_min = int("{{tens_min}}");
+			var ones_min = int("{{ones_min}}");
+			var tens_sec = int("{{tens_sec}}");
+			var tens_sec = int("{{ones_sec}}");
+
+			console.log(tens_min);
+
+			// Update the count down every 1 second
+			var x = setInterval(function() {
+
+				// Get today's date and time
+				var now = new Date().getTime();
+
+				// Find the distance between now and the count down date
+				var distance = countDownDate - now;
+
+				// Time calculations for days, hours, minutes and seconds
+				// var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				// var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+				
+
+				// Display the result in the element with id="demo"
+				document.getElementById("clock").innerHTML = minutes + ":" + seconds;
+
+				// If the count down is finished, write some text
+				if (distance < 0) {
+					clearInterval(x);
+					document.getElementById("demo").innerHTML = "EXPIRED";
+				}
+			}, 1000);
+		</script>
 		<div class="timer">
 			<img src="../../static/coloring/images/clock 2.svg">
-			2:00
+			<div class="id"></div>
+			{{tens_min}}{{ones_min}}:{{tens_sec}}{{ones_sec}}
 		</div>
 	</div>
 
