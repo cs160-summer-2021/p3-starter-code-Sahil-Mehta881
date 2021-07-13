@@ -6,6 +6,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>P3 Coloring</title>
 
+	<link rel="stylesheet" href="../../static/coloring/css/new_interaction.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
 
@@ -35,9 +42,77 @@
 		    margin-right: auto;
 		    display: block;
 		}
+
+		.time-form {
+			margin-right: 0%;
+			margin-left: 30%;
+			margin-top: 20%;
+			margin-bottom: 20%;
+			
+		}
+
+		.time-input {
+			background-color: white;
+			border: none;
+			padding-top: 0.75%;
+			padding-top: 0.75%;
+			padding-left: 0.25%;
+			width: 8%;
+			margin: 0.5%;
+			border-radius: 10%;
+		
+		}
+
+		input {
+			font-family: 'Orbitron', sans-serif;
+			font-size: 425%;
+		}
+
+		.start-button {
+			background-color: white;
+			border-radius: 5%;
+			
+			padding: 1%;
+			margin-top: 0.5%;
+			margin-left: 15%;
+		}
 	</style>
 
-	<script type="text/javascript" canvas="canvas">
+	<script type="text/javascript">
+	
+		$(function() {
+			// source: https://stackoverflow.com/questions/15337084/using-javascript-to-auto-move-cursor-onto-next-form-field
+			
+			$('#tens_min').keypress(function() {
+				var self = $(this);
+				setTimeout(function() {
+					if (self.val().length > 0) {
+						$('#ones_min').focus();
+					}
+				}, 1);
+			});
+
+			$('#ones_min').keypress(function() {
+				var self = $(this);
+				setTimeout(function() {
+					if (self.val().length > 0) {
+						$('#tens_sec').focus();
+					}
+				}, 1);
+			});
+
+			$('#tens_sec').keypress(function() {
+				var self = $(this);
+				setTimeout(function() {
+					if (self.val().length > 0) {
+						$('#ones_sec').focus();
+					}
+				}, 1);
+			});
+
+			
+		});
+
     </script>
 		
 </head>
@@ -46,14 +121,26 @@
 
 	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas>
 	<div id="color-palette"></div> -->
-    <form action="{% url 'new_interaction' %}" method="post">
+	<div style="display: flex; justify-content: center;">
+
+	
+    <form class="time-form" action="{% url 'new_interaction' %}" method="post">
         {% csrf_token %}
-        <input name="tens_min" type="text" placeholder="tens_m">
-        <input name="ones_min" type="text" placeholder="ones_m">
-        <input name="tens_sec" type="text" placeholder="tens_s">
-        <input name="ones_sec" type="text" placeholder="ones_s">
-        <button type="submit">Start coloring!</button>
+		
+		<div class="row d-flex justify-content-center">
+			<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
+			<input class="time-input" id="ones_min" name="ones_min" type="text">
+			<span style="margin-bottom: 20%; font-size: xx-large; font-weight: bolder;">:</span>
+			<input class="time-input" id="tens_sec" name="tens_sec" type="text">
+			<input class="time-input" id="ones_sec" name="ones_sec" type="text">
+		</div>
+		
+        <div class="row">
+			<button class="start-button" type="submit">Start Coloring!</button>
+		</div>
+        
     </form>
+	</div>
 </body>
 
 </html>
