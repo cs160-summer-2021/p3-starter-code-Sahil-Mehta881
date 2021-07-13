@@ -44,10 +44,11 @@
 		}
 
 		.time-form {
+			width: 500px;
 			margin-right: 0%;
-			margin-left: 30%;
-			margin-top: 20%;
-			margin-bottom: 20%;
+			margin-left: 17%;
+			margin-top: 10%;
+			margin-bottom: 10%;
 			
 		}
 
@@ -56,8 +57,7 @@
 			border: none;
 			padding-top: 0.75%;
 			padding-top: 0.75%;
-			padding-left: 0.25%;
-			width: 8%;
+			width: 50px;
 			margin: 0.5%;
 			border-radius: 10%;
 		
@@ -65,16 +65,18 @@
 
 		input {
 			font-family: 'Orbitron', sans-serif;
-			font-size: 425%;
+			font-size: 40px;
+			text-align: center; 
 		}
 
 		.start-button {
 			background-color: white;
 			border-radius: 5%;
-			
 			padding: 1%;
-			margin-top: 0.5%;
+			margin-top: 10px;
 			margin-left: 15%;
+
+			/* Need shadow for button */
 		}
 	</style>
 
@@ -122,24 +124,20 @@
 	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas>
 	<div id="color-palette"></div> -->
 	<div style="display: flex; justify-content: center;">
-
 	
-    <form class="time-form" action="{% url 'new_interaction' %}" method="post">
-        {% csrf_token %}
-		
-		<div class="row d-flex justify-content-center">
-			<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
-			<input class="time-input" id="ones_min" name="ones_min" type="text">
-			<span style="margin-bottom: 20%; font-size: xx-large; font-weight: bolder;">:</span>
-			<input class="time-input" id="tens_sec" name="tens_sec" type="text">
-			<input class="time-input" id="ones_sec" name="ones_sec" type="text">
-		</div>
-		
-        <div class="row">
-			<button class="start-button" type="submit">Start Coloring!</button>
-		</div>
-        
-    </form>
+		<form class="time-form" action="{% url 'new_interaction' %}" method="post">
+			{% csrf_token %}
+				<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
+				<input class="time-input" id="ones_min" name="ones_min" type="text">
+				<span style="font-size: xx-large; font-weight: bolder;">:</span>
+				<input class="time-input" id="tens_sec" name="tens_sec" type="text">
+				<input class="time-input" id="ones_sec" name="ones_sec" type="text">
+			
+			<div class="row">
+				<button class="start-button" type="submit">Start Coloring!</button>
+			</div>
+			
+		</form>
 	</div>
 </body>
 
