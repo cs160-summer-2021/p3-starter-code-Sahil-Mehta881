@@ -43,8 +43,13 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem 2rem;
     border-radius: 0px 0px 24px 0px;
+}
+
+.menu-button {
+    width: 2.4rem;
+    margin-right: 0.8rem;
 }
 
 .timer {
@@ -52,6 +57,13 @@ body {
     color: #383838;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 6rem;
+}
+
+#clockface {
+    width: 1.4rem;
 }
 
 /* PALETTE */
@@ -64,7 +76,7 @@ body {
     display: inline-block;
     border-radius: 24px 0px 0px 24px;
     height: 60%;
-    
+    transform: translateX(330px);
 }
 
 .palette-contents {
@@ -79,13 +91,14 @@ body {
     padding: 2rem 0rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin-right: 1rem;
 }
 
 #open-drawer {
     width: 1.6rem;
+    transform: rotate(180deg);
 }
 
 .swatches {
@@ -123,7 +136,7 @@ body {
     border-left: 0.2rem solid #E73F3F;
 }
 
-.paint-tools {
+.color-tools {
     display: flex;
     flex-direction: column;
     padding: 2rem 0rem;
@@ -149,6 +162,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#canvas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .pre-made-settings {
@@ -217,7 +236,35 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem 2rem;
     border-radius: 24px 24px 0px 0px;
 }
 
+.tool {
+    visibility: collapse;
+    max-height: 0;
+    background-color: #B8B8B8;
+    border-radius: 3px;
+}
+
+.using {
+    visibility: visible;
+    background-color: #B8B8B8;
+    border-radius: 3px;
+    max-height: none;
+    padding: 0.4rem 0.8rem;
+    width: 12rem;
+}
+
+/* CANVAS */
+
+.canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 56rem;
+    height: 40rem;
+    background-color: #fafafa;
+}

@@ -230,8 +230,8 @@
 <body>
 
 	<div class="menu-bar">
-		<img>
-		<img>
+		<img src="../../static/coloring/images/Back.svg" class="menu-button">
+		<img src="../../static/coloring/images/Download.svg" class="menu-button">
 
 		<script>
 			
@@ -256,7 +256,7 @@
 			}, 1000);
 		</script>
 		<div class="timer">
-			<img src="../../static/coloring/images/clock 2.svg">
+			<img src="../../static/coloring/images/clock 2.svg" id="clockface">
 			<br>
 			<div id="clock" style="margin: 10px;"></div>
 			
@@ -294,14 +294,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="paint-tools">
+			<div class="color-tools">
 				<div class="paint-buttons">
 					<div class="button" id="reset-button">
 						Reset Palette
 					</div>
 				</div>
 				<div class="color-wheel-settings">
-					<canvas class="color-wheel-settings" id="canvas"></canvas>
+					<canvas id="canvas"></canvas>
 					<!-- Uncomment the above line to test the color wheel w/ inspect element (console) -->
 					
 				</div>
@@ -349,11 +349,13 @@
 
 	<div class="tool-bar">
 		<div class="paint-tools">
-
+			<div class="tool">Paint bucket</div>
+			<div class="tool using">Paintbrush</div>
+			<div class="tool">Eraser</div>
 		</div>
 		<div class="undo-redo">
-			<img>
-			<img>
+			<img src="../../static/coloring/images/Undo.svg">
+			<img src="../../static/coloring/images/Redo.svg">
 		</div>
 	</div>
 
