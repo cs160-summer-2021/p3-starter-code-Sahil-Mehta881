@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
 
-    <link rel="stylesheet" href="../../static/coloring/css/start.css">
+    <link rel="stylesheet" href="../../static/coloring/css/home.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,15 +21,25 @@
 
 <body>
 
+	<header>
+		<div class="nav-holder">
+			<img src="../../static/coloring/images/Logo-Small.svg" id="logo">
+		</div>
+	</header>
 	<div class="content">
 
-		<img src="../../static/coloring/images/Logo-Large.svg" id="logo">
-
-		<h4>Take a timed break, try some paint</h4>
-		
-		<button class="start-button" type="submit">Start</button>
+		<div class="instructions">
+			<h2>Your first piece</h2>
+			<h4>Use this template as your first Paintbreak!</h4>
+		</div>
+		<button class="start-button" type="submit">Start coloring
+			<img src="../../static/coloring/images/arrow-right 2.svg" id="arrow">
+		</button>
 		
 	</div>
+
+	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas>
+	<div id="color-palette"></div>-->
 </body>
     
 </html>

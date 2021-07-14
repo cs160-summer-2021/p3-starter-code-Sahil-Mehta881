@@ -22,6 +22,7 @@ html, body {
     height: 100%;
     font-family: 'Lato', sans-serif;
     color: #181818;
+    overflow: hidden;
 }
 
 body {
