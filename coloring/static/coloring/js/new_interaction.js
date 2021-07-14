@@ -299,6 +299,43 @@ window.onload = function() {
             
         });
 
+        $('#add-time').click(function () {
+            $("#dialog").css("visibility", "hidden");
+            var tens_min = parseInt($("#tens_min").val(), 10);
+            var ones_min = parseInt($("#ones_min").val(), 10);
+            var tens_sec = parseInt($("#tens_sec").val(), 10);
+            var ones_sec = parseInt($("#ones_sec").val(), 10);
+            var total_sec = tens_min * 600 + ones_min * 60 + tens_sec * 10 + ones_sec;
+            run_timer(total_sec, false);
+        });
+
+        $('#tens_min').keypress(function() {
+            var self = $(this);
+            setTimeout(function() {
+                if (self.val().length > 0) {
+                    $('#ones_min').focus();
+                }
+            }, 1);
+        });
+
+        $('#ones_min').keypress(function() {
+            var self = $(this);
+            setTimeout(function() {
+                if (self.val().length > 0) {
+                    $('#tens_sec').focus();
+                }
+            }, 1);
+        });
+
+        $('#tens_sec').keypress(function() {
+            var self = $(this);
+            setTimeout(function() {
+                if (self.val().length > 0) {
+                    $('#ones_sec').focus();
+                }
+            }, 1);
+        });
+
         // source: https://www.w3docs.com/snippets/javascript/how-to-convert-rgb-to-hex-and-vice-versa.html
         function rgbToHex(r, g, b) {
               return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).split(".")[0];

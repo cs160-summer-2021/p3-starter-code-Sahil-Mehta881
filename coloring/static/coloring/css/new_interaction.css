@@ -336,3 +336,20 @@ body {
     width: 1.8rem;
     margin-left: 0.4rem;
 }
+
+.dialog-button {
+    
+    opacity: 0%;
+    /* margin-top: 4rem; */
+    /* padding: 16px 40px;*/
+    border-radius: 1px;
+    background-color: #4791E9;
+    border: none;
+    color: #ffffff;
+    font-size: 12pt;
+    /* width:fit-content; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}

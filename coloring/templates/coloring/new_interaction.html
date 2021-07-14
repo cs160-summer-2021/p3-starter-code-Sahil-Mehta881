@@ -55,33 +55,56 @@
 			var ones_sec = parseInt("{{ones_sec}}", 10)
 			var total_sec = tens_min * 600 + ones_min * 60 + tens_sec * 10 + ones_sec;
 
-			var minutes = Math.floor(total_sec / 60).toString();
-			var seconds = (total_sec % 60).toString();
+			
 
-			// wait for the "clock" element to not equal null
-			var y = setInterval(function() {
-				if (document.getElementById("clock") != null) {
-					document.getElementById("clock").innerHTML = minutes + ":" + seconds;
-					clearInterval(y);
+			
+
+			function run_timer (total_sec, first) {
+				// wait for the "clock" element to not equal null
+				var minutes = Math.floor(total_sec / 60).toString();
+				var seconds = total_sec % 60;
+
+				if (seconds < 10) {
+					seconds = "0" + seconds.toString();
+				} else {
+					seconds = seconds.toString();
 				}
-			}, 0.1);
+				if (first) {
+					var y = setInterval(function() {
+					if (document.getElementById("clock") != null) {
+						document.getElementById("clock").innerHTML = minutes + ":" + seconds;
+						clearInterval(y);
+					}
+					}, 0.1);
+				} else {
+					document.getElementById("clock").innerHTML = minutes + ":" + seconds;
+				}
+				
 
-			var x = setInterval(function() {
+				var x = setInterval(function() {
 					if (total_sec <= 0) {
 						$("#dialog").css("visibility", "visible");
+						clearInterval(x);
+					} else {
+						total_sec -= 1;
+						minutes = Math.floor(total_sec / 60).toString();
+						seconds = total_sec % 60;
+
+						if (seconds < 10) {
+							seconds = "0" + seconds.toString();
+						} else {
+							seconds = seconds.toString();
+						}
+
+						// Display the result in the element with id="clock"
+						document.getElementById("clock").innerHTML = minutes + ":" + seconds;
 					} 
-					total_sec -= 1;
-					minutes = Math.floor(total_sec / 60).toString();
-					seconds = (total_sec % 60).toString();
+					
+				}, 1000);
+			}
 
-					if (seconds < 10) {
-						seconds = "0" + seconds;
-					}
+			run_timer(total_sec, true);
 
-					// Display the result in the element with id="clock"
-					document.getElementById("clock").innerHTML = minutes + ":" + seconds;
-			}, 1000);
-			
 		</script>
 		<div class="timer">
 			<img src="../../static/coloring/images/clock 2.svg" id="clockface">
@@ -129,7 +152,6 @@
 				</div>
 				<div class="color-wheel-settings">
 					<canvas id="canvas"></canvas>
-					<!-- Uncomment the above line to test the color wheel w/ inspect element (console) -->
 					
 				</div>
 				<div class="pre-made-settings">
@@ -189,11 +211,11 @@
 		<canvas id="myCanvas" width="600%" height="600%"></canvas>
 	</div>
 
-<div id="dialog" title="Basic dialog" style="margin-top: 400px; visibility: hidden; background-color: orange;">
+<div id="dialog" title="Basic dialog" style="padding: 5px; margin-top: 400px; margin-left: 20%; margin-right: 20%;visibility: hidden; background-color: orange; position: fixed">
 	<h3>The timer is up!</h3>
-	<button>Exit Canvas</button><br>
+	<a href="../coloring/"><button>Exit Canvas</button></a><br>
 	<h6>OR</h6>
-	<button>Add Time</button>
+	<button id="add-time">Add Time</button>
 	<div class="input-boxes">
 		<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
 		<input class="time-input" id="ones_min" name="ones_min" type="text">
@@ -201,18 +223,9 @@
 		<input class="time-input" id="tens_sec" name="tens_sec" type="text">
 		<input class="time-input" id="ones_sec" name="ones_sec" type="text">
 	</div>
-
 	
-  </div>
-  <script>
-	$(function() {
-	  $( "#opener" ).on( "click", function() {
-		$( "#dialog" ).css( "visibility", "visible" );
-	  });
-	});
-	</script>
-   
-  <button id="opener" style="margin-top: 200px;">Open Dialog</button>
+</div>
+  
 
 </body>
 </html>
