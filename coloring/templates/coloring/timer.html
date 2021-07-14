@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>P3 Coloring</title>
 
-	<link rel="stylesheet" href="../../static/coloring/css/new_interaction.css">
+	<link rel="stylesheet" href="../../static/coloring/css/timer.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,70 +15,6 @@
 
 	<script type="text/javascript" src="{% static 'coloring/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
-
-	<style type="text/css">
-		#color-palette {
-			width: 300px;
-			background-color: #f1f1f1;
-			display: flex;
-			flex-wrap: wrap;
-			position: absolute;
-			top: 0;
-		}
-
-		.swatch {
-			width: 24px;
-			height: 24px;
-			-moz-border-radius: 12px;
-			-webkit-border-radius: 12px;
-			border-radius: 12px;
-			margin: 3px;
-		}
-
-		#myCanvas {
-			padding-left: 0;
-		    padding-right: 0;
-		    margin-left: auto;
-		    margin-right: auto;
-		    display: block;
-		}
-
-		.time-form {
-			width: 500px;
-			margin-right: 0%;
-			margin-left: 17%;
-			margin-top: 10%;
-			margin-bottom: 10%;
-			
-		}
-
-		.time-input {
-			background-color: white;
-			border: none;
-			padding-top: 0.75%;
-			padding-top: 0.75%;
-			width: 50px;
-			margin: 0.5%;
-			border-radius: 10%;
-		
-		}
-
-		input {
-			font-family: 'Orbitron', sans-serif;
-			font-size: 40px;
-			text-align: center; 
-		}
-
-		.start-button {
-			background-color: white;
-			border-radius: 5%;
-			padding: 1%;
-			margin-top: 10px;
-			margin-left: 15%;
-
-			/* Need shadow for button */
-		}
-	</style>
 
 	<script type="text/javascript">
 	
@@ -123,22 +59,37 @@
 
 	<!-- <canvas id="myCanvas" width="750px" height="750px"></canvas>
 	<div id="color-palette"></div> -->
-	<div style="display: flex; justify-content: center;">
+	<header>
+		<div class="nav-holder">
+			<img src="../../static/coloring/images/Logo-Small.svg" id="logo">
+		</div>
+	</header>
+	<div class="content">
+
+		<div class="instructions">
+			<h2>Set a timer for your painting session</h2>
+			<h4>You can come back to your piece later!</h4>
+		</div>
+
+		<div class="set-time">
 	
-		<form class="time-form" action="{% url 'new_interaction' %}" method="post">
-			{% csrf_token %}
-				<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
-				<input class="time-input" id="ones_min" name="ones_min" type="text">
-				<span style="font-size: xx-large; font-weight: bolder;">:</span>
-				<input class="time-input" id="tens_sec" name="tens_sec" type="text">
-				<input class="time-input" id="ones_sec" name="ones_sec" type="text">
-			
-			<div class="row">
-				<button class="start-button" type="submit">Start Coloring!</button>
-			</div>
-			
-		</form>
+			<form class="time-form" action="{% url 'new_interaction' %}" method="post">
+				{% csrf_token %}
+				<div class="input-boxes">
+					<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
+					<input class="time-input" id="ones_min" name="ones_min" type="text">
+					<span style="font-size: xx-large; font-weight: bolder;">:</span>
+					<input class="time-input" id="tens_sec" name="tens_sec" type="text">
+					<input class="time-input" id="ones_sec" name="ones_sec" type="text">
+				</div>
+					
+					<button class="start-button" type="submit">Start coloring
+						<img src="../../static/coloring/images/arrow-right 2.svg" id="arrow">
+					</button>
+			</form>
+		</div>
 	</div>
+	
 </body>
 
 </html>
