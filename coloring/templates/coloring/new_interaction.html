@@ -19,11 +19,15 @@
 	<style type="text/css">
 		
 
+		#canvas {
+			margin-top: 1em;
+		}
+
 		
 
 	</style>
 
-	<script type="text/javascript" canvas="canvas">
+	<script type="text/javascript">
 		window.onload = function() {
 			var canvas = document.getElementById('myCanvas');
 
@@ -179,6 +183,9 @@
 
 				var relX = 0;
 				var relY = 0;
+
+				var drawer_open = false;
+
 				$('#canvas').click(function (wheel) {
 					var posX = $(this).offset().left
 					var posY = $(this).offset().top;
@@ -186,6 +193,17 @@
 					relY = wheel.pageY - posY - radius;
 					currentColor = getColor(relX, relY); // color saved for use!
 					console.log(currentColor);
+				});
+
+				$('#open-drawer').click(function (drawer) {
+					if (drawer_open) {
+						$(".palette").css("transform", "translateX(330px)");
+					} else {
+						$(".palette").css("transform", "translateX(0px)");
+					}
+					drawer_open = !drawer_open;
+					console.log(drawer_open);
+					
 				});
 
 				
@@ -354,7 +372,7 @@
 	</div>
 
 	<div class="canvas">
-		<!--<canvas id="myCanvas" width="40%" height="40%"></canvas>-->
+		<!-- <canvas id="myCanvas" width="40%" height="40%"></canvas> -->
 	</div>
 
 </body>
