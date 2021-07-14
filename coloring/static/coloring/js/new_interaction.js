@@ -31,10 +31,12 @@ window.onload = function() {
                     if (hit.item.fillColor._components[0] != 1 || hit.item.fillColor._components[1] != 1 || hit.item.fillColor._components[2] != 1) {
                         undo.push({"prev_color": hit.item.fillColor, "color": "#fafafa", "point": event.point});
                         hit.item.fillColor = "#fafafa";
+                        $("#undo").css("filter", "hue-rotate(336deg) brightness(0%)");
                     }
                 } else if (mode == "bucket") {
                     undo.push({"prev_color": hit.item.fillColor, "color": cp.history[cp.history.length - 1], "point": event.point});
                     hit.item.fillColor = cp.history[cp.history.length - 1];
+                    $("#undo").css("filter", "hue-rotate(336deg) brightness(0%)");
                 }
             }
         }
@@ -228,7 +230,11 @@ window.onload = function() {
         $('#undo').click(function () {
             if (undo.length == 0) {
                 return null;
+            } else if (undo.length == 1) {
+                $("#undo").css("filter", "hue-rotate(219deg)");
+                // $("#undo").css("color", "#E5E5E5");
             }
+
             var action = undo[undo.length-1];
             var hit = mandala.item.hitTest(action["point"], { tolerance: 10, fill: true });
             if (hit) {
@@ -237,17 +243,22 @@ window.onload = function() {
             
             undo.pop()
             redo.push({"color": action["color"], "point": action["point"]});
+            $("#redo").css("filter", "hue-rotate(336deg) brightness(0%)");
+            
         });
 
         $('#redo').click(function () {
             if (redo.length == 0) {
                 return null;
+            } else if (redo.length == 1) {
+                $("#redo").css("filter", "hue-rotate(219deg)");
             }
 
             var action = redo[redo.length-1];
             var hit = mandala.item.hitTest(action["point"], { tolerance: 10, fill: true });
             
             undo.push({"prev_color": hit.item.fillColor, "color": action["color"], "point": action["point"]});
+            $("#undo").css("filter", "hue-rotate(336deg) brightness(0%)");
             if (hit) {
                 hit.item.fillColor = action["color"];
             }
