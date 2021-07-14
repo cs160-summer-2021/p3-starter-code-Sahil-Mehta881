@@ -198,7 +198,6 @@
 					
 					var swatch_id = "#swatch-" + currentSwatch[currentSwatch.length - 1];
 					$(swatch_id).css("background-color", currentColor);
-					console.log(currentColor);
 				});
 
 				var drawer_open = false;
@@ -216,10 +215,9 @@
 
 				$('.swatch').click(function (drawer) {
 					var clicked_id = $(this).attr('id');
+					$(this).css("border-left", "0.2rem solid " + swatch_to_color[clicked_id]);
+					$("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor + "00");
 					currentColor = swatch_to_color[clicked_id];
-					console.log(currentColor);
-					$(this).css("border-left", "0.2rem solid " + currentColor);
-					$("#" + currentSwatch).css("border-left", "none");
 					currentSwatch = clicked_id;
 				});
 
@@ -227,10 +225,10 @@
 					for (var i=1; i<=8; i++) {
 						var reset_color = swatch_to_color["swatch-fill-" + i.toString()];
 						$("#swatch-" + i.toString()).css("background-color", reset_color);
-						$("#swatch-fill-" + i.toString()).css("border-left", "none");
+						$("#swatch-fill-" + i.toString()).css("border-left", "0.2rem solid " + reset_color + "00");
 					}
 					$("#swatch-fill-8").css("border-left", "0.2rem solid #383838");
-					currentSwatch = "#swatch-fill-8";
+					currentSwatch = "swatch-fill-8";
 					currentColor = "#383838";
 				});
 
