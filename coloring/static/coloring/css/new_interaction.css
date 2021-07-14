@@ -61,13 +61,17 @@ body {
     z-index: 1000;
     top: 10%;
     right: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-content: center;
+    display: inline-block;
     border-radius: 24px 0px 0px 24px;
     height: 60%;
+    
+}
+
+.palette-contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 100%;
 }
 
 .basic {
@@ -75,7 +79,7 @@ body {
     padding: 2rem 0rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-right: 4%;
 }
@@ -106,7 +110,15 @@ body {
     height: 100%;
     background-color: #E73F3F;
     border-radius: 3px;
-    box-shadow: 0px 0px 3px #00000020 inset;
+    box-shadow: 0px 0px 3px #00000015 inset;
+    color: #ffffff;
+    font-size: 8pt;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 .current {
@@ -114,11 +126,10 @@ body {
 }
 
 .paint-tools {
-    height: 100%;
     display: flex;
     flex-direction: column;
     padding: 2rem 0rem;
-    
+    margin-right: 4%;
 }
 
 .paint-buttons {
@@ -136,6 +147,12 @@ body {
     color: #B8B8B8;
 }
 
+.color-wheel-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .pre-made-settings {
     display: flex;
     flex-direction: column;
@@ -144,8 +161,52 @@ body {
 .row {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
 }
 
+.pre-made {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: auto;
+}
+
+#reds {
+    background-color: #E73F3F;
+}
+
+#oranges {
+    background-color: #F49238;
+}
+
+#yellows {
+    background-color: #FFD467;
+}
+
+#greens {
+    background-color: #7ED95E;
+}
+
+#blues {
+    background-color: #4791E9;
+}
+
+#purples {
+    background-color: #B550D9;
+}
+
+#browns {
+    background-color: #AC5D4B;
+}
+
+#blacks {
+    background-color: #383838;
+}
+
+#pinks {
+    background-color: #E567BB;
+}
 
 
 /* TOOL BAR */
