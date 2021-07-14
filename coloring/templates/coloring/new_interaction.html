@@ -183,6 +183,9 @@
 
 				var relX = 0;
 				var relY = 0;
+
+				var drawer_open = false;
+
 				$('#canvas').click(function (wheel) {
 					var posX = $(this).offset().left
 					var posY = $(this).offset().top;
@@ -190,6 +193,17 @@
 					relY = wheel.pageY - posY - radius;
 					currentColor = getColor(relX, relY); // color saved for use!
 					console.log(currentColor);
+				});
+
+				$('#open-drawer').click(function (drawer) {
+					if (drawer_open) {
+						$(".palette").css("transform", "translateX(330px)");
+					} else {
+						$(".palette").css("transform", "translateX(0px)");
+					}
+					drawer_open = !drawer_open;
+					console.log(drawer_open);
+					
 				});
 
 				
