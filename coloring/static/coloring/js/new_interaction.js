@@ -255,17 +255,37 @@ window.onload = function() {
         });
 
         $('#eraser').click(function () {
-            mode = 'eraser';
-            $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor + "00");
+
+            if ((mode != 'eraser') || ($('.tool').hasClass('open-tool-bar'))) {
+                $("#" + mode).removeClass("using");
+                $("#eraser").addClass("using");
+                mode = 'eraser';
+                $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor + "00");
+                $('.tool').removeClass('open-tool-bar');
+            }
+            else {
+                $('.tool').addClass('open-tool-bar');
+            }
         });
 
         $('#bucket').click(function () {
-            mode = 'bucket';
-            $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor);
+            if ((mode != 'bucket') || ($('.tool').hasClass('open-tool-bar'))) {
+                $("#" + mode).removeClass("using");
+                $("#bucket").addClass("using");
+                mode = 'bucket';
+                $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor);
+                $('.tool').removeClass('open-tool-bar');
+            }
+            else {
+                $('.tool').addClass('open-tool-bar');
+            }
+            
         });
 
         $('#brush').click(function () {
             mode = 'brush';
+
+            
         });
 
         // source: https://www.w3docs.com/snippets/javascript/how-to-convert-rgb-to-hex-and-vice-versa.html
