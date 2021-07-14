@@ -17,27 +17,7 @@
 	<script type="text/javascript" src="{% static 'coloring/vendors/paper/paper-full.min.js' %}"></script>
 
 	<style type="text/css">
-		#color-palette {
-			width: 300px;
-			background-color: #f1f1f1;
-			display: flex;
-			flex-wrap: wrap;
-			position: absolute;
-			top: 0;
-		}
-
-		#myCanvas {
-			padding-left: 0;
-		    padding-right: 0;
-		    margin-left: auto;
-		    margin-right: auto;
-		    display: block;
-		}
-
-
-		canvas {
-			margin-top: 1em;
-		}
+		
 
 		#canvas {
 			margin-top: 1em;
@@ -284,84 +264,86 @@
 	</div>
 
 	<div class="palette">
+		<div class="palette-contents">
+			<div class="basic">
+				<img id="open-drawer" src="../../static/coloring/images/Open drawer.svg">
+				<div class="swatches">
+					<div class="swatch" id="swatch-1">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch" id="swatch-2">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch" id="swatch-3">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch" id="swatch-4">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch" id="swatch-5">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch" id="swatch-6">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch" id="swatch-7">
+						<div class="paint-color"></div>
+					</div>
+					<div class="swatch current" id="swatch-8">
+						<div class="paint-color"></div>
+					</div>
+				</div>
+			</div>
+			<div class="paint-tools">
+				<div class="paint-buttons">
+					<div class="button" id="reset-button">
+						Reset Palette
+					</div>
+				</div>
+				<div class="color-wheel-settings">
+					<canvas class="color-wheel-settings" id="canvas"></canvas>
+					<!-- Uncomment the above line to test the color wheel w/ inspect element (console) -->
+					
+				</div>
+				<div class="pre-made-settings">
+					<div class="row">
+						<div class="swatch pre-made">
+							<div class="paint-color" id="reds">Reds</div>
+						</div>
+						<div class="swatch pre-made">
+							<div class="paint-color" id="oranges">Oranges</div>
+						</div>
+						<div class="swatch pre-made">
+							<div class="paint-color" id="yellows">Yellows</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="swatch pre-made">
+							<div class="paint-color" id="greens">Greens</div>
+						</div>
+						<div class="swatch pre-made">
+							<div class="paint-color" id="blues">Blues</div>
+						</div>
+						<div class="swatch pre-made">
+							<div class="paint-color" id="purples">Purples</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="swatch pre-made">
+							<div class="paint-color" id="browns">Browns</div>
+						</div>
+						<div class="swatch pre-made">
+							<div class="paint-color" id="blacks">Blacks</div>
+						</div>
+						<div class="swatch pre-made">
+							<div class="paint-color" id="pinks">Pinks</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		
-		<div class="basic">
-			<img id="open-drawer" src="../../static/coloring/images/Open drawer.svg">
-			<div class="swatches">
-				<div class="swatch" id="swatch-1">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch" id="swatch-2">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch" id="swatch-3">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch" id="swatch-4">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch" id="swatch-5">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch" id="swatch-6">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch" id="swatch-7">
-					<div class="paint-color"></div>
-				</div>
-				<div class="swatch current" id="swatch-8">
-					<div class="paint-color"></div>
-				</div>
-			</div>
-		</div>
-		<div class="paint-tools">
-			<div class="paint-buttons">
-				<div class="button" id="reset-button">
-					Reset Palette
-				</div>
-			</div>
-			<div class="color-wheel-settings">
-				
-				<canvas id="canvas"></canvas>
-				<!-- Uncomment the above line to test the color wheel w/ inspect element (console) -->
-				
-			</div>
-			<div class="pre-made-settings">
-				<div class="row">
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="swatch">
-						<div class="paint-color"></div>
-					</div>
-					<div class="swatch">
-						<div class="paint-color">Hello</div>
-					</div>
-					<div class="swatch">
-						<div class="paint-color">Hello</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		
 	</div>
 
