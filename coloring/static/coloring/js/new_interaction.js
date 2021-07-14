@@ -3,6 +3,7 @@ window.onload = function() {
 
     var undo = [];
     var redo = [];
+    var mode = "bucket";
 
     // coloring page
     var mandala = {
@@ -22,20 +23,19 @@ window.onload = function() {
         var tool = new paper.Tool();
 
         tool.onMouseDown = function (event) {
-            console.log("got here");
             var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
             if (hit) {
                 // Color pallette keeps track of the full history of colors, though we
                 // only color in with the most-recent color.
-                
-                if (hit.item.fillColor[0] != "#") {
-                    console.log("hello there!");
-                    undo.push({"prev_color": "#fafafa", "color": cp.history[cp.history.length - 1], "point": event.point});
-                } else {
+                if (mode == "eraser") {
+                    if (hit.item.fillColor._components[0] != 1 || hit.item.fillColor._components[1] != 1 || hit.item.fillColor._components[2] != 1) {
+                        undo.push({"prev_color": hit.item.fillColor, "color": "#fafafa", "point": event.point});
+                        hit.item.fillColor = "#fafafa";
+                    }
+                } else if (mode == "bucket") {
                     undo.push({"prev_color": hit.item.fillColor, "color": cp.history[cp.history.length - 1], "point": event.point});
+                    hit.item.fillColor = cp.history[cp.history.length - 1];
                 }
-
-                hit.item.fillColor = cp.history[cp.history.length - 1];
             }
         }
     }
@@ -76,7 +76,6 @@ window.onload = function() {
             paper.project.insertLayer(0,mandala.item);
 
             if (custom) {
-                console.log("got here!");
                 myCustomInteraction();
             } else {
                 myGradientInteraction();
@@ -171,6 +170,10 @@ window.onload = function() {
         var currentSwatch = "swatch-fill-8";
 
         $('#canvas').click(function (wheel) {
+            if (mode == "eraser") {
+                return null;
+            }
+
             var posX = $(this).offset().left
             var posY = $(this).offset().top;
             relX = wheel.pageX - posX - radius;
@@ -198,6 +201,10 @@ window.onload = function() {
             "swatch-fill-5": "#4791E9", "swatch-fill-6": "#B550D9", "swatch-fill-7": "#AC5D4B", "swatch-fill-8": "#383838"};
 
         $('.swatch').click(function (drawer) {
+            if (mode == "eraser") {
+                return null;
+            }
+
             var clicked_id = $(this).attr('id');
             $(this).css("border-left", "0.2rem solid " + swatch_to_color[clicked_id]);
             $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor + "00");
@@ -245,6 +252,20 @@ window.onload = function() {
                 hit.item.fillColor = action["color"];
             }
             redo.pop();
+        });
+
+        $('#eraser').click(function () {
+            mode = 'eraser';
+            $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor + "00");
+        });
+
+        $('#bucket').click(function () {
+            mode = 'bucket';
+            $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor);
+        });
+
+        $('#brush').click(function () {
+            mode = 'brush';
         });
 
         // source: https://www.w3docs.com/snippets/javascript/how-to-convert-rgb-to-hex-and-vice-versa.html
