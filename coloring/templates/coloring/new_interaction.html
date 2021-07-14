@@ -67,6 +67,9 @@
 			}, 0.1);
 
 			var x = setInterval(function() {
+					if (total_sec <= 0) {
+						$("#dialog").css("visibility", "visible");
+					} 
 					total_sec -= 1;
 					minutes = Math.floor(total_sec / 60).toString();
 					seconds = (total_sec % 60).toString();
@@ -178,12 +181,38 @@
 		<div class="undo-redo">
 			<img src="../../static/coloring/images/Undo.svg" id="undo">
 			<img src="../../static/coloring/images/Redo.svg" id="redo">
+			
 		</div>
 	</div>
 
 	<div class="canvas">
 		<canvas id="myCanvas" width="600%" height="600%"></canvas>
 	</div>
+
+<div id="dialog" title="Basic dialog" style="margin-top: 400px; visibility: hidden; background-color: orange;">
+	<h3>The timer is up!</h3>
+	<button>Exit Canvas</button><br>
+	<h6>OR</h6>
+	<button>Add Time</button>
+	<div class="input-boxes">
+		<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
+		<input class="time-input" id="ones_min" name="ones_min" type="text">
+		<span style="font-size: xx-large; font-weight: bolder;">:</span>
+		<input class="time-input" id="tens_sec" name="tens_sec" type="text">
+		<input class="time-input" id="ones_sec" name="ones_sec" type="text">
+	</div>
+
+	
+  </div>
+  <script>
+	$(function() {
+	  $( "#opener" ).on( "click", function() {
+		$( "#dialog" ).css( "visibility", "visible" );
+	  });
+	});
+	</script>
+   
+  <button id="opener" style="margin-top: 200px;">Open Dialog</button>
 
 </body>
 </html>
