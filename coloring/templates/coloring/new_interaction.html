@@ -27,6 +27,7 @@
 			padding: 0;
 		    margin: auto;
 		    display: block;
+			padding-top: 1rem;
 			
 		}
 
@@ -212,11 +213,11 @@
 
 <div id="dialog" title="Basic dialog">
 	<h4>The timer is up!</h4>
-	<a href="../coloring/"><button class="button">Exit Canvas</button></a>
+	<a href="../coloring/"><button class="button" id="exit-canvas">Exit Canvas</button></a>
 	<br>
 	<p>or</p>
 	<br>
-	<button id="add-time" class="button">Add Time</button>
+	
 	<div class="input-boxes">
 		<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
 		<input class="time-input" id="ones_min" name="ones_min" type="text">
@@ -224,7 +225,7 @@
 		<input class="time-input" id="tens_sec" name="tens_sec" type="text">
 		<input class="time-input" id="ones_sec" name="ones_sec" type="text">
 	</div>
-	
+	<button id="add-time" class="button">Add Time</button>
 </div>
   
 
