@@ -27,6 +27,7 @@
 			padding: 0;
 		    margin: auto;
 		    display: block;
+			padding-top: 1rem;
 			
 		}
 
@@ -210,11 +211,13 @@
 		<canvas id="myCanvas" width="600%" height="600%"></canvas>
 	</div>
 
-<div id="dialog" title="Basic dialog" style="padding: 5px; margin-top: 400px; margin-left: 20%; margin-right: 20%;visibility: hidden; background-color: orange; position: fixed">
-	<h3>The timer is up!</h3>
-	<a href="../coloring/"><button>Exit Canvas</button></a><br>
-	<h6>OR</h6>
-	<button id="add-time">Add Time</button>
+<div id="dialog" title="Basic dialog">
+	<h4>The timer is up!</h4>
+	<a href="../coloring/"><button class="button" id="exit-canvas">Exit Canvas</button></a>
+	<br>
+	<p>or</p>
+	<br>
+	
 	<div class="input-boxes">
 		<input class="time-input d-flex justify-content-center" id="tens_min" name="tens_min" type="text">
 		<input class="time-input" id="ones_min" name="ones_min" type="text">
@@ -222,7 +225,7 @@
 		<input class="time-input" id="tens_sec" name="tens_sec" type="text">
 		<input class="time-input" id="ones_sec" name="ones_sec" type="text">
 	</div>
-	
+	<button id="add-time" class="button">Add Time</button>
 </div>
   
 
