@@ -91,6 +91,9 @@ window.onload = function() {
 
     var currentColor = 0;
 
+    var offsetX = 100;
+    var offsetY = 17;
+
     // source: https://medium.com/@bantic/hand-coding-a-color-wheel-with-canvas-78256c9d7d43
     $(() => {
         let canvas = document.getElementById('canvas');
@@ -134,7 +137,7 @@ window.onload = function() {
                 }
             }
 
-            ctx.putImageData(image, 100, 17);
+            ctx.putImageData(image, offsetX, offsetY);
         }
         
         function xy2polar(x, y) {
@@ -168,6 +171,8 @@ window.onload = function() {
         var relX = 0;
         var relY = 0;
 
+        
+
         var currentColor = "#383838"; // default is black
         var currentSwatch = "swatch-fill-8";
 
@@ -176,16 +181,19 @@ window.onload = function() {
                 return null;
             }
 
-            var posX = $(this).offset().left
+            var posX = $(this).offset().left;
             var posY = $(this).offset().top;
-            relX = wheel.pageX - posX - radius;
-            relY = wheel.pageY - posY - radius;
+
+            relX = wheel.pageX - posX - radius - offsetX;
+            relY = wheel.pageY - posY - radius - offsetY;
+
             currentColor = getColor(relX, relY); // color saved for use!
             currentColor = rgbToHex(currentColor[0], currentColor[1], currentColor[2]);
             $("#" + currentSwatch).css("border-left", "0.2rem solid " + currentColor);
             
             var swatch_id = "#swatch-" + currentSwatch[currentSwatch.length - 1];
             $(swatch_id).css("background-color", currentColor);
+            swatch_to_color[currentSwatch] = currentColor;
             cp.history.push(currentColor);
         });
 
@@ -200,8 +208,8 @@ window.onload = function() {
         });
 
         swatch_to_color = {"swatch-fill-1": "#E73F3F", "swatch-fill-2": "#F49238", "swatch-fill-3": "#FFD467", "swatch-fill-4": "#7ED95E", 
-            "swatch-fill-5": "#4791E9", "swatch-fill-6": "#B550D9", "swatch-fill-7": "#AC5D4B", "swatch-fill-8": "#383838"};
-
+        "swatch-fill-5": "#4791E9", "swatch-fill-6": "#B550D9", "swatch-fill-7": "#AC5D4B", "swatch-fill-8": "#383838"};
+        
         $('.swatch').click(function (drawer) {
             if (mode == "eraser") {
                 return null;
@@ -215,15 +223,16 @@ window.onload = function() {
             cp.history.push(currentColor);
         });
 
-        $('#reset-button').click(function (reset) {
+        $('#reset-button').click(function () {
+            swatch_to_color = {"swatch-fill-1": "#E73F3F", "swatch-fill-2": "#F49238", "swatch-fill-3": "#FFD467", "swatch-fill-4": "#7ED95E", 
+            "swatch-fill-5": "#4791E9", "swatch-fill-6": "#B550D9", "swatch-fill-7": "#AC5D4B", "swatch-fill-8": "#383838"};
             for (var i=1; i<=8; i++) {
                 var reset_color = swatch_to_color["swatch-fill-" + i.toString()];
                 $("#swatch-" + i.toString()).css("background-color", reset_color);
                 $("#swatch-fill-" + i.toString()).css("border-left", "0.2rem solid " + reset_color + "00");
             }
-            $("#swatch-fill-8").css("border-left", "0.2rem solid #383838");
-            currentSwatch = "swatch-fill-8";
-            currentColor = "#383838";
+            $("#" + currentSwatch).css("border-left", "0.2rem solid " + swatch_to_color[currentSwatch]);
+            currentColor = swatch_to_color[currentSwatch];
             cp.history.push(currentColor);
         });
 
