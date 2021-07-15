@@ -29,6 +29,10 @@ body {
     background-color: #FAFAFA;
 }
 
+a {
+    text-decoration: none;
+}
+
 h2 {
     font-size: 28pt;
     font-weight: 500;
