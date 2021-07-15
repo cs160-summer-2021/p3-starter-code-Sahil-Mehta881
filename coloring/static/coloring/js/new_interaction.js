@@ -134,7 +134,7 @@ window.onload = function() {
                 }
             }
 
-            ctx.putImageData(image, 0, 0);
+            ctx.putImageData(image, 100, 17);
         }
         
         function xy2polar(x, y) {
