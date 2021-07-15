@@ -193,8 +193,10 @@ window.onload = function() {
         $('#open-drawer').click(function (drawer) {
             if (drawer_open) {
                 $(".palette").css("transform", "translateX(330px)");
+                $("#open-drawer").css("transform", "rotate(0deg)")
             } else {
                 $(".palette").css("transform", "translateX(0px)");
+                $("#open-drawer").css("transform", "rotate(180deg)")
             }
             drawer_open = !drawer_open;	
         });
@@ -372,5 +374,15 @@ window.onload = function() {
         // Change r,g,b values from [0,1] to [0,255]
         return [255*r,255*g,255*b];
     }
+
+    $(".pre-made").click(function(){
+        // add color to the color palette history
+        $(".unavailable").css("visibility", "visible")
+    });
+
+    $("#bummer").click(function(){
+        // add color to the color palette history
+        $(".unavailable").css("visibility", "hidden")
+    });
 }
 
