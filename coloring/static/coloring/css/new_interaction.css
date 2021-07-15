@@ -50,7 +50,7 @@ body {
 
 .menu-button {
     width: 2.4rem;
-    margin-right: 0.8rem;
+    margin-right: 1.5rem;
 }
 
 .timer {
@@ -65,6 +65,7 @@ body {
 
 #clockface {
     width: 1.4rem;
+    margin-right: 1.5rem;
 }
 
 /* PALETTE */
